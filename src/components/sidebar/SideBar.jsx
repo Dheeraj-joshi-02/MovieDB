@@ -1,14 +1,4 @@
-import {
-  Filter,
-  MoveIcon,
-  PersonStanding,
-  TrendingDown,
-  TrendingUpDown,
-  TrendingUpIcon,
-  Tv,
-  Tv2,
-  X,
-} from "lucide-react";
+import { Tv, X } from "lucide-react";
 import React from "react";
 
 const SideBar = ({ isOpen, onClose }) => {
@@ -49,23 +39,23 @@ const SideBar = ({ isOpen, onClose }) => {
         </div>
         <nav className="p-6">
           <div className="mb-6 flex items-center gap-2">
-            <h1 className="text-sm font-medium text-white">New Feeds</h1>
+            <h1 className="text-lg font-medium text-white">New Feeds</h1>
           </div>
 
           <div className="space-y-2 flex flex-col">
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white flex gap-2">
+            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
               Trending
             </a>
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white flex gap-2">
+            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
               Popular
             </a>
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white flex gap-2">
+            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
               Movies
             </a>
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white flex gap-2">
+            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
               Tv Shows
             </a>
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white flex gap-2">
+            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
               People
             </a>
           </div>
@@ -73,7 +63,7 @@ const SideBar = ({ isOpen, onClose }) => {
         <hr />
         <nav className="p-6">
           <div className="mb-6 flex items-center gap-2">
-            <h1 className="text-sm font-medium text-white">
+            <h1 className="text-lg font-medium text-white">
               Website Information
             </h1>
           </div>
