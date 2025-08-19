@@ -28,8 +28,6 @@ const Header = ({ onMenuClick }) => {
     return () => clearTimeout(timer);
   }, [query]);
 
-  console.log(searchData);
-
   return (
     <React.Fragment>
       <header className="sticky top-0 z-30">

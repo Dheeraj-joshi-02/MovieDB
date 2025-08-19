@@ -1,4 +1,4 @@
-import { Album, Megaphone } from "lucide-react";
+import { Megaphone, Tv2 } from "lucide-react";
 import React from "react";
 
 const Display = ({ data }) => {
@@ -7,16 +7,12 @@ const Display = ({ data }) => {
       {data && (
         <div
           style={{
-            backgroundImage: `linear-gradient(
-          rgba(0,0,0,0.2),
-          rgba(0,0,0,0.5),
-          rgba(0,0,0,0.8)
-      ), url(https://image.tmdb.org/t/p/original/${
-        data.backdrop_path || data.profile_path || ""
-      })`,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5),rgba(0,0,0,0.8)), url(https://image.tmdb.org/t/p/original/${
+              data.backdrop_path || data.profile_path || ""
+            })`,
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            backgroundSize: "top 50%",
+            backgroundSize: "cover",
           }}
           className="w-full h-64 sm:h-80 md:h-96 lg:h-[380px] flex items-center"
         >
@@ -35,8 +31,9 @@ const Display = ({ data }) => {
                 <Megaphone />{" "}
                 {data.release_date ? data.release_date : "No information"}
               </p>
-              <p className="flex items-center gap-2">
-                <Album /> {data.media_type}
+              <p className="flex items-center justify-center gap-2">
+                <Tv2 />
+                {data.media_type}
               </p>
             </div>
             <button className="mt-5 bg-gradient-to-br from-blue-500 to-purple-600 px-4 py-3 rounded-lg cursor-pointer">
