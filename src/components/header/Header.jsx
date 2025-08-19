@@ -1,14 +1,39 @@
+import axios from "../../utils/Axios";
 import { Menu, PlusIcon, Search } from "lucide-react";
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import NoImage from "../../assets/No-image.png";
+import { Link } from "react-router-dom";
 
 const Header = ({ onMenuClick }) => {
   const [query, setQuery] = useState("");
-  console.log(query);
+  const [searchData, setsearchData] = useState([]);
+
+  useEffect(() => {
+    if (!query) {
+      setsearchData([]);
+      return;
+    }
+    const getSearch = async () => {
+      try {
+        const { data } = await axios.get(`/search/multi?query=${query}`);
+        setsearchData(data.results);
+      } catch (error) {
+        console.log(`Error: ${error}`);
+      }
+    };
+    let timer = setTimeout(() => {
+      getSearch();
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  console.log(searchData);
+
   return (
     <React.Fragment>
       <header className="sticky top-0 z-30">
-        <div className="px-4 sm:px-6 lg:px-8">
+        <div className="px-4 w-full sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Left section */}
             <div className="flex items-center gap-4">
@@ -27,37 +52,53 @@ const Header = ({ onMenuClick }) => {
               <input
                 onChange={(event) => setQuery(event.target.value)}
                 value={query}
-                type="search"
-                className="border-1 border-zinc-300 w-full px-5 py-2 rounded-lg text-white outline-0 ::placeholder:text-zinc-400 pl-10  bg-transparent "
+                type="text"
+                className="border-1 border-zinc-300 w-full px-5 py-2 rounded-lg text-white outline-0 placeholder:text-zinc-400 pl-10  bg-transparent "
                 placeholder="Search for a movies, tv show, and person...."
               />
               {query.length > 0 && (
                 <PlusIcon
                   onClick={() => setQuery("")}
-                  className="absolute right-5 h-5 w-5 text-zinc-400 text-3xl rotate-45 cursor-pointer"
+                  className="absolute right-5 h-5 w-5 text-zinc-400 rotate-45 cursor-pointer"
                 />
               )}
-
-              {/* <div className="absolute -bottom-3 top-[85%] left-0 right-0 bg-red-50 h-[50vh] w-[98%] mx-auto rounded-lg text-gray-600 overflow-y-scroll">
-                <NavLink className="w-full py-2 pl-2 flex justify-start items-center gap-5 font-semibold border-b-2 border-gray-200 hover:text-black hover:bg-zinc-300 duration-500 rounded-lg">
-                  <img
-                    src="https://images.unsplash.com/photo-1553562999-1e20feada94c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBvcm5zdGFyfGVufDB8fDB8fHww"
-                    alt="img"
-                    width={150}
-                    className="rounded-md"
-                  />
-                  <span>Hello everyone</span>
-                </NavLink>
-              </div> */}
+              {query.length > 0 && searchData.length > 0 && (
+                <div className="absolute -bottom-3 top-[85%] left-0 right-0 bg-red-50 h-[50vh] overflow-y-scroll w-[98%] mx-auto rounded-lg text-gray-600">
+                  {searchData.map((item) => (
+                    <Link
+                      key={item.id}
+                      className="w-full p-4 flex justify-start items-start gap-5 font-semibold border-b-2 border-gray-200 hover:text-black hover:bg-zinc-300 duration-500 rounded-lg sm:p-4 sm:gap"
+                    >
+                      <img
+                        src={
+                          item.backdrop_path || item.profile_path
+                            ? `https://image.tmdb.org/t/p/w500/${
+                                item.backdrop_path || item.profile_path
+                              }`
+                            : NoImage
+                        }
+                        alt="poster"
+                        className="rounded-md w-20 h-28 object-cover"
+                      />
+                      <span>
+                        {item.name ||
+                          item.title ||
+                          item.original_name ||
+                          item.original_title}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Right section*/}
             <div className="flex items-center gap-2">
-              <div className="ml-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-sm font-medium text-white">
-                  <span className="cursor-pointer">DJ</span>
-                </div>
+              {/* <div className="ml-2"> */}
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-sm font-medium text-white">
+                <span className="cursor-pointer">DJ</span>
               </div>
+              {/* </div> */}
             </div>
           </div>
         </div>

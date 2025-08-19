@@ -1,9 +1,10 @@
 import { Tv, X } from "lucide-react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SideBar = ({ isOpen, onClose }) => {
   return (
-    <>
+    <React.Fragment>
       {isOpen && (
         <div
           className="bg-opacity-50 fixed inset-0 z-50 bg-black lg:hidden"
@@ -27,7 +28,7 @@ const SideBar = ({ isOpen, onClose }) => {
         <div className="flex h-16 items-center justify-between px-6">
           <h1 className="flex gap-2 items-center text-2xl text-white font-bold">
             <Tv />
-            <span>MovieDB</span>
+            <span className="">MovieDB</span>
           </h1>
           <button
             onClick={onClose}
@@ -43,21 +44,21 @@ const SideBar = ({ isOpen, onClose }) => {
           </div>
 
           <div className="space-y-2 flex flex-col">
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
+            <Link className="hover:bg-gradient-to-br from-blue-500 to-purple-600 hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
               Trending
-            </a>
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
+            </Link>
+            <Link className="hover:bg-gradient-to-br from-blue-500 to-purple-600 hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
               Popular
-            </a>
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
+            </Link>
+            <Link className="hover:bg-gradient-to-br from-blue-500 to-purple-600 hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
               Movies
-            </a>
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
+            </Link>
+            <Link className="hover:bg-gradient-to-br from-blue-500 to-purple-600 hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
               Tv Shows
-            </a>
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
+            </Link>
+            <Link className="hover:bg-gradient-to-br from-blue-500 to-purple-600 hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white ">
               People
-            </a>
+            </Link>
           </div>
         </nav>
         <hr />
@@ -69,16 +70,16 @@ const SideBar = ({ isOpen, onClose }) => {
           </div>
 
           <div className="space-y-2 flex flex-col">
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white flex gap-2">
+            <a className="hover:bg-gradient-to-br from-blue-500 to-purple-600 hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white flex gap-2">
               About MovieDB
             </a>
-            <a className="hover:bg-[#6E44FF] hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white flex gap-2">
+            <a className="hover:bg-gradient-to-br from-blue-500 to-purple-600 hover:text-white duration-500 rounded py-2 px-5 cursor-pointer text-white flex gap-2">
               Contact
             </a>
           </div>
         </nav>
       </aside>
-    </>
+    </React.Fragment>
   );
 };
 

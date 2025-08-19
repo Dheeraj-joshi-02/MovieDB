@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "./components/sidebar/SideBar";
 import Header from "./components/header/Header";
+import Display from "./components/display/Display";
+import axios from "./utils/Axios";
 
 const App = () => {
-  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  document.title = "MoiveDB | Homepage";
+
+  const [wallpaper, setWallpaper] = useState([]);
+  useEffect(() => {
+    const getDisplayWallpaper = async () => {
+      try {
+        const { data } = await axios.get(`/trending/all/day`);
+        let randomIndex = Math.floor(Math.random() * data.results.length);
+        let randomData = data.results[randomIndex];
+        setWallpaper(randomData);
+        console.log(randomData);
+      } catch (error) {
+        console.log(`Error: ${error}`);
+      }
+    };
+
+    getDisplayWallpaper();
+  }, []);
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleMenuClick = () => {
     setSidebarOpen(true);
@@ -24,10 +45,10 @@ const App = () => {
             <Header onMenuClick={handleMenuClick} />
             {/* Main content */}
             <main className="flex-1 overflow-y-auto">
-              <div className="mx-auto h-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                {/* <div className="mb-8">
-                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"></div>
-                </div> */}
+              <div className="mb-8">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <Display data={wallpaper} />
+                </div>
               </div>
             </main>
           </div>
