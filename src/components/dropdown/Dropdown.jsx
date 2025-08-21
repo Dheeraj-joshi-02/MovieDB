@@ -1,4 +1,4 @@
-import { BookDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import React from "react";
 
 const CustomDropdown = ({ title, options }) => {
@@ -23,7 +23,7 @@ const CustomDropdown = ({ title, options }) => {
 
       {/* Custom arrow */}
       <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
-        <BookDown />
+        <ChevronDown />
       </div>
     </div>
   );

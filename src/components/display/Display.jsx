@@ -10,11 +10,11 @@ const Display = ({ data }) => {
             backgroundImage: `linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5),rgba(0,0,0,0.8)), url(https://image.tmdb.org/t/p/original/${
               data.backdrop_path || data.profile_path || ""
             })`,
-            backgroundPosition: "center",
+            backgroundPosition: "center center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
-          className="w-full min-h-[30vh] sm:min-h-[50vh] lg:min-h-[60vh] flex items-center"
+          className="w-full max-h-[40vh] sm:max-h-[60vh] lg:max-h-[80vh] flex items-center"
         >
           <div className="p-4 sm:p-8 md:p-10 lg:p-16 w-full lg:w-3/4 xl:w-1/2">
             {/* Title */}

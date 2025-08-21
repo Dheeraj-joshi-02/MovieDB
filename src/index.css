@@ -12,38 +12,3 @@
 ::-webkit-scrollbar-thumb {
   background-color: #181819;
 }
-
-/* index.css ya Dropdown.css mein add karein */
-select {
-  appearance: none; /* Default arrow hataane ke liye */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  background-color: #fff;
-  border: 2px solid #27272a;
-  border-radius: 8px;
-  padding: 10px 40px 10px 15px;
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-
-  transition: all 0.3s ease;
-  outline: none;
-}
-
-select::-ms-expand {
-  display: none;
-}
-
-select:hover {
-  border-color: #357ab8;
-}
-
-select:focus {
-  border-color: #2c5a91;
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
-}
-
-option {
-  padding: 10px;
-}

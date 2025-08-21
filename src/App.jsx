@@ -9,7 +9,7 @@ import Loader from "./components/loader/Loader";
 const App = () => {
   document.title = "MoiveDB | Homepage";
 
-  const [wallpaper, setWallpaper] = useState([]);
+  const [wallpaper, setWallpaper] = useState(null);
   const [trendingWallpaper, setTrendingWallpaper] = useState([]);
   useEffect(() => {
     const fetchTrending = async () => {
