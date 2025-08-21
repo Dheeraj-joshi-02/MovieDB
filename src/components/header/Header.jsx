@@ -30,7 +30,7 @@ const Header = ({ onMenuClick }) => {
 
   return (
     <React.Fragment>
-      <header className="sticky top-0 z-30">
+      <header className="sticky top-0 z-30 backdrop-blur-lg bg-gradient-to-b from-gray-900/95 to-black/95 border-r border-gray-800">
         <div className="px-4 w-full sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Left section */}
