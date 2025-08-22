@@ -1,10 +1,11 @@
 import { ChevronDown } from "lucide-react";
 import React from "react";
 
-const CustomDropdown = ({ title, options }) => {
+const CustomDropdown = ({ title, options, func }) => {
   return (
     <div className="relative w-64">
       <select
+        onChange={func}
         defaultValue={0}
         name="format"
         id="format"
@@ -15,13 +16,11 @@ const CustomDropdown = ({ title, options }) => {
           {title}
         </option>
         {options.map((option, index) => (
-          <option key={index} value={index + 1}>
-            {option}
+          <option key={index} value={option}>
+            {option.charAt(0).toUpperCase() + option.slice(1)}
           </option>
         ))}
       </select>
-
-      {/* Custom arrow */}
       <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
         <ChevronDown />
       </div>

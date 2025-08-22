@@ -1,30 +1,46 @@
 import React, { useEffect, useState } from "react";
-import SideBar from "./components/sidebar/SideBar";
-import Header from "./components/header/Header";
-import Display from "./components/display/Display";
+import SideBar from "./components/home/SideBar";
+import Header from "./components/home/Header";
+import Display from "./components/home/Display";
 import axios from "./utils/Axios";
-import HorizontalCards from "./components/horizontalCards/HorizontalCards";
+import HorizontalCards from "./components/home/HorizontalCards";
 import Loader from "./components/loader/Loader";
+import CustomDropdown from "./components/home/Dropdown";
 
 const App = () => {
   document.title = "MoiveDB | Homepage";
 
   const [wallpaper, setWallpaper] = useState(null);
   const [trendingWallpaper, setTrendingWallpaper] = useState([]);
+  const [category, setCategory] = useState("all");
+
+  const getTrendingWallpaper = async () => {
+    try {
+      const { data } = await axios.get(`/trending/${category}/day`);
+      setTrendingWallpaper(data.results);
+    } catch (error) {
+      console.log(`fetchTrendingWallpaper Error: ${error}`);
+    }
+  };
+
+  const getTrendingRandomWallpaper = async () => {
+    try {
+      const { data } = await axios.get(`/trending/all/day`);
+      let randomIndex = Math.floor(Math.random() * data.results.length);
+      let randomData = data.results[randomIndex];
+      setWallpaper(randomData);
+    } catch (error) {
+      console.log(`fetchTrendingRandomWallpaper Error: ${error}`);
+    }
+  };
   useEffect(() => {
-    const fetchTrending = async () => {
-      try {
-        const { data } = await axios.get(`/trending/all/day`);
-        setTrendingWallpaper(data.results);
-        let randomIndex = Math.floor(Math.random() * data.results.length);
-        let randomData = data.results[randomIndex];
-        setWallpaper(randomData);
-      } catch (error) {
-        console.log(`Error: ${error}`);
-      }
-    };
-    fetchTrending();
-  }, []);
+    setTimeout(() => {
+      getTrendingWallpaper();
+      !wallpaper && getTrendingRandomWallpaper();
+    }, 200);
+
+    return () => clearInterval(setTimeout);
+  }, [category]);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -51,6 +67,17 @@ const App = () => {
                 <div className="mb-8">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <Display data={wallpaper} />
+                  </div>
+                  {/* Dropdown */}
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 sm:p-4 md:p-6">
+                    <h1 className="text-2xl sm:text-3xl font-semibold text-zinc-300">
+                      Trending
+                    </h1>
+                    <CustomDropdown
+                      title="Filter"
+                      options={["tv", "movies", "all"]}
+                      func={(e) => setCategory(e.target.value)}
+                    />
                   </div>
                   <HorizontalCards data={trendingWallpaper} />
                 </div>

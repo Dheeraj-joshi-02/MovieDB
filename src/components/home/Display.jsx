@@ -16,7 +16,7 @@ const Display = ({ data }) => {
           }}
           className="w-full max-h-[40vh] sm:max-h-[60vh] lg:max-h-[80vh] flex items-center"
         >
-          <div className="p-4 sm:p-8 md:p-10 lg:p-16 w-full lg:w-3/4 xl:w-1/2">
+          <div className="p-4 sm:p-8 md:p-10 lg:p-16 w-full lg:w-3/4 xl:w-[80%]">
             {/* Title */}
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white font-extrabold leading-tight">
               {data.name ||

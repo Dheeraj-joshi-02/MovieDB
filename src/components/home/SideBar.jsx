@@ -19,7 +19,7 @@ const SideBar = ({ isOpen, onClose }) => {
   ];
 
   return (
-    <>
+    <React.Fragment>
       {isOpen && (
         <div
           className="bg-black bg-opacity-50 fixed inset-0 z-40 lg:hidden"
@@ -107,7 +107,7 @@ const SideBar = ({ isOpen, onClose }) => {
           </div>
         </nav>
       </aside>
-    </>
+    </React.Fragment>
   );
 };
 
