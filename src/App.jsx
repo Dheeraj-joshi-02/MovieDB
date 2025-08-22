@@ -1,27 +1,28 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SideBar from "./components/home/SideBar";
 import Header from "./components/home/Header";
 import Display from "./components/home/Display";
 import axios from "./utils/Axios";
 import HorizontalCards from "./components/home/HorizontalCards";
 import Loader from "./components/loader/Loader";
-import CustomDropdown from "./components/home/Dropdown";
+import React from "react";
+import Dropdown from "./components/home/Dropdown";
 
 const App = () => {
   document.title = "MoiveDB | Homepage";
 
   const [wallpaper, setWallpaper] = useState(null);
-  const [trendingWallpaper, setTrendingWallpaper] = useState([]);
+  const [trendingWallpaper, setTrendingWallpaper] = useState(null);
   const [category, setCategory] = useState("all");
 
-  const getTrendingWallpaper = async () => {
+  const getTrendingWallpaper = React.useCallback(async () => {
     try {
       const { data } = await axios.get(`/trending/${category}/day`);
       setTrendingWallpaper(data.results);
     } catch (error) {
       console.log(`fetchTrendingWallpaper Error: ${error}`);
     }
-  };
+  }, [category]);
 
   const getTrendingRandomWallpaper = async () => {
     try {
@@ -34,13 +35,13 @@ const App = () => {
     }
   };
   useEffect(() => {
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       getTrendingWallpaper();
       !wallpaper && getTrendingRandomWallpaper();
     }, 200);
 
-    return () => clearInterval(setTimeout);
-  }, [category]);
+    return () => clearTimeout(timeoutId);
+  }, [category, getTrendingWallpaper, wallpaper]);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -55,11 +56,11 @@ const App = () => {
   return (
     <React.Fragment>
       <div className="flex h-screen bg-[#000000] text-white">
-        <div className="flex h-[100%] overflow-hidden w-full">
+        <div className="flex h-[100%] w-full overflow-hidden">
           {/* SideBar Section */}
           <SideBar isOpen={sidebarOpen} onClose={handleCloseSidebar} />
           {wallpaper && trendingWallpaper ? (
-            <div className="flex min-w-0 flex-1 flex-col w-full">
+            <div className="flex w-full min-w-0 flex-1 flex-col">
               {/* Header Section */}
               <Header onMenuClick={handleMenuClick} />
               {/* Main content */}
@@ -69,13 +70,13 @@ const App = () => {
                     <Display data={wallpaper} />
                   </div>
                   {/* Dropdown */}
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 sm:p-4 md:p-6">
-                    <h1 className="text-2xl sm:text-3xl font-semibold text-zinc-300">
+                  <div className="flex flex-col gap-3 p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4 md:p-6">
+                    <h1 className="text-2xl font-semibold text-zinc-300 sm:text-3xl">
                       Trending
                     </h1>
-                    <CustomDropdown
+                    <Dropdown
                       title="Filter"
-                      options={["tv", "movies", "all"]}
+                      options={["tv", "movie", "all"]}
                       func={(e) => setCategory(e.target.value)}
                     />
                   </div>

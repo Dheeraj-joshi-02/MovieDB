@@ -5,13 +5,13 @@ import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Trending from "./components/sidebar/Trending";
 
-const root = createRoot(document.getElementById("root"));
-
-root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/trending" element={<Trending />} />
-    </Routes>
-  </BrowserRouter>
+createRoot(document.getElementById("root")).render(
+  <React.Fragment>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/trending" element={<Trending />} />
+      </Routes>
+    </BrowserRouter>
+  </React.Fragment>,
 );
