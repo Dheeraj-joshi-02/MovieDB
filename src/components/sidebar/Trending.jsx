@@ -15,7 +15,6 @@ const Trending = () => {
   const getTrending = async () => {
     try {
       const { data } = await axios.get(`/trending/${category}/${time}`);
-      // console.log(data?.results);
       setTrendings(data?.results);
     } catch (error) {
       console.log(`fetchTrendingWallpaper Error: ${error}`);

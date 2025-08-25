@@ -26,15 +26,12 @@ const Card = ({ data }) => {
                     alt={item.name || item.title || ""}
                   />
                 </div>
-                <h2 className="mt-1 truncate p-2 text-base font-bold text-white sm:text-lg md:text-xl">
+                <h2 className="mt-1 truncate p-2 text-base font-bold text-white sm:text-sm md:text-lg">
                   {item.name ||
                     item.title ||
                     item.original_name ||
                     item.original_title}
                 </h2>
-                <p className="mt-1 line-clamp-2 p-2 text-xs text-gray-400 sm:text-sm md:text-base">
-                  {item.overview?.split(" ").slice(0, 10).join(" ")}...
-                </p>
               </Link>
             </div>
           ))}

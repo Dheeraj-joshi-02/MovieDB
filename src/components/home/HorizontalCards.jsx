@@ -35,7 +35,7 @@ const HorizontalCards = ({ data }) => {
                     item.original_name ||
                     item.original_title}
                 </h2>
-                <p className="mt-1 line-clamp-2 p-2 text-xs text-gray-400 sm:text-sm md:text-base">
+                <p className="mt-1 line-clamp-2 text-xs text-gray-400 sm:text-sm md:text-base">
                   {item.overview?.split(" ").slice(0, 12).join(" ")}...
                 </p>
               </div>

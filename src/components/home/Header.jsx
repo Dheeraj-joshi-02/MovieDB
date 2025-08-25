@@ -24,7 +24,7 @@ const Header = ({ onMenuClick }) => {
     };
     let timer = setTimeout(() => {
       getSearch();
-    }, 100);
+    });
 
     return () => clearTimeout(timer);
   }, [query]);
@@ -66,7 +66,7 @@ const Header = ({ onMenuClick }) => {
                   {searchData.map((item) => (
                     <Link
                       key={item.id}
-                      className="sm:gap flex w-full items-start justify-start gap-5 rounded-lg border-b-2 border-gray-200 p-4 font-semibold duration-500 hover:bg-zinc-300 hover:text-black sm:p-4"
+                      className="sm:gap flex w-full items-start justify-start gap-5 rounded-lg border-b-2 border-gray-200 p-2 font-semibold duration-500 hover:bg-zinc-300 hover:text-black sm:p-4"
                     >
                       <img
                         src={
@@ -77,14 +77,19 @@ const Header = ({ onMenuClick }) => {
                             : NoImage
                         }
                         alt="poster"
-                        className="h-28 w-20 rounded-md object-cover"
+                        className="h-12 w-12 rounded-full object-cover sm:h-24 sm:w-24"
                       />
-                      <span>
-                        {item.name ||
-                          item.title ||
-                          item.original_name ||
-                          item.original_title}
-                      </span>
+                      <div className="leading-snug">
+                        <h5 className="line-clamp-1 text-sm font-medium sm:text-base md:text-lg">
+                          {item.name ||
+                            item.title ||
+                            item.original_name ||
+                            item.original_title}
+                        </h5>
+                        <p className="mt-1 line-clamp-2 text-xs text-gray-500 sm:text-sm md:text-sm">
+                          {item.overview}
+                        </p>
+                      </div>
                     </Link>
                   ))}
                 </div>
@@ -93,11 +98,9 @@ const Header = ({ onMenuClick }) => {
 
             {/* Right section*/}
             <div className="flex items-center gap-2">
-              {/* <div className="ml-2"> */}
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-btn-gradient text-sm font-medium text-white">
+              <div className="bg-btn-gradient flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium text-white">
                 <span className="cursor-pointer">DJ</span>
               </div>
-              {/* </div> */}
             </div>
           </div>
         </div>

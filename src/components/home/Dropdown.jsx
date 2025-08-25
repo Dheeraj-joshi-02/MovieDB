@@ -16,8 +16,8 @@ const Dropdown = ({ title, options, func, className }) => {
           <option value={0} hidden>
             {title}
           </option>
-          {options.map((option, index) => (
-            <option key={index} value={option}>
+          {options.map((option) => (
+            <option key={option} value={option}>
               {option.charAt(0).toUpperCase() + option.slice(1)}
             </option>
           ))}

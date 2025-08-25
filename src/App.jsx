@@ -38,7 +38,7 @@ const App = () => {
     const timeoutId = setTimeout(() => {
       getTrendingWallpaper();
       !wallpaper && getTrendingRandomWallpaper();
-    }, 200);
+    });
 
     return () => clearTimeout(timeoutId);
   }, [category, getTrendingWallpaper, wallpaper]);
