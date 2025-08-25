@@ -59,11 +59,11 @@ const App = () => {
         <div className="flex h-[100%] w-full overflow-hidden">
           {/* SideBar Section */}
           <SideBar isOpen={sidebarOpen} onClose={handleCloseSidebar} />
-          {wallpaper && trendingWallpaper ? (
-            <div className="flex w-full min-w-0 flex-1 flex-col">
-              {/* Header Section */}
-              <Header onMenuClick={handleMenuClick} />
-              {/* Main content */}
+          <div className="flex w-full min-w-0 flex-1 flex-col">
+            {/* Header Section */}
+            <Header onMenuClick={handleMenuClick} />
+            {/* Main content */}
+            {wallpaper && trendingWallpaper ? (
               <main className="flex-1 overflow-y-auto">
                 <div className="mb-8">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -83,10 +83,10 @@ const App = () => {
                   <HorizontalCards data={trendingWallpaper} />
                 </div>
               </main>
-            </div>
-          ) : (
-            <Loader />
-          )}
+            ) : (
+              <Loader />
+            )}
+          </div>
         </div>
       </div>
     </React.Fragment>
