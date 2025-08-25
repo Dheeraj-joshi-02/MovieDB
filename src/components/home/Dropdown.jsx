@@ -1,10 +1,10 @@
 import { ChevronDown } from "lucide-react";
 import React from "react";
 
-const Dropdown = ({ title, options, func }) => {
+const Dropdown = ({ title, options, func, className }) => {
   return (
     <React.Fragment>
-      <div className="relative w-64">
+      <div className={`relative w-52 ${className}`}>
         <select
           onChange={func}
           defaultValue={0}

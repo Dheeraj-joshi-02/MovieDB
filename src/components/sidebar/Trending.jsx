@@ -2,7 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Dropdown from "../home/Dropdown";
-import axios from "axios";
+import axios from "../../utils/Axios";
 import Card from "./components/Card";
 import Loader from "../loader/Loader";
 
@@ -15,7 +15,8 @@ const Trending = () => {
   const getTrending = async () => {
     try {
       const { data } = await axios.get(`/trending/${category}/${time}`);
-      console.log(data.results);
+      // console.log(data?.results);
+      setTrendings(data?.results);
     } catch (error) {
       console.log(`fetchTrendingWallpaper Error: ${error}`);
     }
@@ -27,25 +28,39 @@ const Trending = () => {
 
   return trendings ? (
     <React.Fragment>
-      <div className="bg-gradient h-screen w-full p-[3%] text-white">
-        <div className="flex w-full items-center justify-between">
-          <h1 className="flex items-center gap-2 text-2xl font-semibold text-zinc-300">
+      <div className="bg-gradient min-h-screen w-full text-white">
+        {/* Header Section */}
+        <div className="flex w-full flex-col items-start justify-between gap-4 p-4 sm:flex-row sm:items-center sm:p-[2%]">
+          {/* Left Heading */}
+          <h1 className="flex items-center gap-2 text-xl font-semibold text-zinc-300 sm:text-2xl">
             <ArrowLeft
               onClick={() => navigate(-1)}
               className="cursor-pointer hover:text-[#6565cd]"
             />
             Trending
           </h1>
-          <div className="flex gap-2">
+
+          {/* Right Dropdowns */}
+          <div className="flex w-full flex-col justify-end-safe gap-2 sm:flex-row">
             <Dropdown
+              className="w-full sm:w-auto"
               title="Category"
               options={["movie", "tv", "all"]}
-              func=""
+              func={(e) => setCategory(e.target.value)}
             />
-            <Dropdown title="Time" options={["week", "day"]} func="" />
+            <Dropdown
+              className="w-full sm:w-auto"
+              title="Time"
+              options={["week", "day"]}
+              func={(e) => setTime(e.target.value)}
+            />
           </div>
         </div>
-        <Card data={trendings} title={category} />
+
+        {/* Card Section */}
+        <div className="w-full px-4 sm:px-[2%]">
+          <Card data={trendings} title={category} />
+        </div>
       </div>
     </React.Fragment>
   ) : (
