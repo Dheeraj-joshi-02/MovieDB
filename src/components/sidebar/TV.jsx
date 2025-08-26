@@ -6,28 +6,27 @@ import axios from "../../utils/Axios";
 import Card from "./components/Card";
 import Loader from "../loader/Loader";
 
-const Trending = () => {
-  document.title = "MoiveDB | Trending";
+const Tv = () => {
+  document.title = "MoiveDB | Tv";
 
   const navigate = useNavigate();
-  const [category, setCategory] = useState("all");
-  const [time, setTime] = useState("day");
-  const [trendings, setTrendings] = useState([]);
+  const [category, setCategory] = useState("airing_today");
+  const [Tv, setTv] = useState([]);
 
-  const getTrending = async () => {
+  const getTv = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/${time}`);
-      setTrendings(data?.results);
+      const { data } = await axios.get(`tv/${category}`);
+      setTv(data?.results);
     } catch (error) {
       console.log(`fetchTrendingWallpaper Error: ${error}`);
     }
   };
 
   useEffect(() => {
-    getTrending();
-  }, [category, time]);
+    getTv();
+  }, [category]);
 
-  return trendings.length > 0 ? (
+  return Tv.length > 0 ? (
     <React.Fragment>
       <div className="bg-gradient min-h-screen w-full text-white">
         {/* Header Section */}
@@ -38,29 +37,23 @@ const Trending = () => {
               onClick={() => navigate(-1)}
               className="cursor-pointer hover:text-[#6565cd]"
             />
-            Trending
+            Tv
           </h1>
 
           {/* Right Dropdowns */}
           <div className="flex w-full flex-col justify-end-safe gap-2 sm:flex-row">
             <Dropdown
               className="w-full sm:w-auto"
-              title="Category"
-              options={["movie", "tv", "all"]}
+              title="Filter"
+              options={["on_the_air", "top_rated", "popular", "airing_today"]}
               func={(e) => setCategory(e.target.value)}
-            />
-            <Dropdown
-              className="w-full sm:w-auto"
-              title="Time"
-              options={["week", "day"]}
-              func={(e) => setTime(e.target.value)}
             />
           </div>
         </div>
 
         {/* Card Section */}
         <div className="w-full px-4 sm:px-[2%]">
-          <Card data={trendings} title={category} />
+          <Card data={Tv} title={category} />
         </div>
       </div>
     </React.Fragment>
@@ -69,4 +62,4 @@ const Trending = () => {
   );
 };
 
-export default Trending;
+export default Tv;

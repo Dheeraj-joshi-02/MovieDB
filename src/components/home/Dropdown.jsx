@@ -4,7 +4,7 @@ import React from "react";
 const Dropdown = ({ title, options, func, className }) => {
   return (
     <React.Fragment>
-      <div className={`relative w-52 ${className}`}>
+      <div className={`relative w-56 ${className}`}>
         <select
           onChange={func}
           defaultValue={0}

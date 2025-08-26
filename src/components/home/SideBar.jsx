@@ -1,21 +1,55 @@
 import React from "react";
-import { Tv, X } from "lucide-react";
+import {
+  ClapperboardIcon,
+  Contact,
+  Database,
+  RollerCoasterIcon,
+  TrendingUp,
+  Tv,
+  TvMinimalPlay,
+  Users,
+  X,
+} from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const SideBar = ({ isOpen, onClose }) => {
   const location = useLocation();
 
   const navLinks = [
-    { label: "Trending", path: "/trending" },
-    { label: "Popular", path: "/popular" },
-    { label: "Movies", path: "/movies" },
-    { label: "TV Shows", path: "/tv" },
-    { label: "People", path: "/people" },
+    {
+      icon: <TrendingUp className="h-5 w-5" />,
+      label: "Trending",
+      path: "/trending",
+    },
+    {
+      icon: <RollerCoasterIcon className="h-5 w-5" />,
+      label: "Popular",
+      path: "/popular",
+    },
+    {
+      icon: <ClapperboardIcon className="h-5 w-5" />,
+      label: "Movies",
+      path: "/movies",
+    },
+    {
+      icon: <TvMinimalPlay className="h-5 w-5" />,
+      label: "TV Shows",
+      path: "/tv",
+    },
+    { icon: <Users className="h-5 w-5" />, label: "People", path: "/people" },
   ];
 
   const infoLinks = [
-    { label: "About MovieDB", path: "/about" },
-    { label: "Contact", path: "/contact" },
+    {
+      icon: <Database className="h-5 w-5" />,
+      label: "About MovieDB",
+      path: "/about",
+    },
+    {
+      icon: <Contact className="h-5 w-5" />,
+      label: "Contact",
+      path: "/contact",
+    },
   ];
 
   return (
@@ -65,12 +99,13 @@ const SideBar = ({ isOpen, onClose }) => {
               <Link
                 key={idx}
                 to={link.path}
-                className={`rounded-md px-4 py-2 font-medium transition-all duration-300 ${
+                className={`flex items-center gap-2 rounded-md px-4 py-2 font-medium transition-all duration-300 ${
                   location.pathname === link.path
                     ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md"
                     : "text-gray-300 hover:bg-gray-800 hover:text-white"
                 }`}
               >
+                {link.icon}
                 {link.label}
               </Link>
             ))}
@@ -90,12 +125,13 @@ const SideBar = ({ isOpen, onClose }) => {
               <Link
                 key={idx}
                 to={link.path}
-                className={`rounded-md px-4 py-2 font-medium transition-all duration-300 ${
+                className={`flex items-center gap-2 rounded-md px-4 py-2 font-medium transition-all duration-300 ${
                   location.pathname === link.path
                     ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md"
                     : "text-gray-300 hover:bg-gray-800 hover:text-white"
                 }`}
               >
+                {link.icon}
                 {link.label}
               </Link>
             ))}
