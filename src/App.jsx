@@ -80,6 +80,7 @@ const App = () => {
                       func={(e) => setCategory(e.target.value)}
                     />
                   </div>
+                  {/* Horizonatal Cards */}
                   <HorizontalCards data={trendingWallpaper} />
                 </div>
               </main>
