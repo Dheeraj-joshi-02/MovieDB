@@ -1,5 +1,5 @@
 import axios from "../../utils/Axios";
-import { Menu, PlusIcon, Search } from "lucide-react";
+import { Menu, PlusIcon, Search, User } from "lucide-react";
 import { useEffect, useState } from "react";
 import NoImage from "../../assets/No-image.png";
 import { Link } from "react-router-dom";
@@ -99,7 +99,9 @@ const Header = ({ onMenuClick }) => {
             {/* Right section*/}
             <div className="flex items-center gap-2">
               <div className="bg-btn-gradient flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium text-white">
-                <span className="cursor-pointer">DJ</span>
+                <span className="cursor-pointer">
+                  <User className="h-5 w-5" />
+                </span>
               </div>
             </div>
           </div>

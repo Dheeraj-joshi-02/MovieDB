@@ -11,15 +11,17 @@ import People from "./components/sidebar/People";
 
 createRoot(document.getElementById("root")).render(
   <React.Fragment>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/trending" element={<Trending />} />
-        <Route path="/popular" element={<Popular />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/tv" element={<Tv />} />
-        <Route path="/people" element={<People />} />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/trending" element={<Trending />} />
+          <Route path="/popular" element={<Popular />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/tv" element={<Tv />} />
+          <Route path="/people" element={<People />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   </React.Fragment>,
 );

@@ -55,7 +55,7 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <div className="flex h-screen bg-[#000000] text-white">
+      <div className="m-auto flex h-screen bg-[#000000] text-white">
         <div className="flex h-[100%] w-full overflow-hidden">
           {/* SideBar Section */}
           <SideBar isOpen={sidebarOpen} onClose={handleCloseSidebar} />
