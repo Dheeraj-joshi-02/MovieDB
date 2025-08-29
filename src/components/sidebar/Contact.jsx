@@ -8,22 +8,7 @@ const Contact = () => {
 
   return (
     <React.Fragment>
-      <div
-        className={`min-h-screen ${theme.colors.background} px-4 sm:px-6 lg:px-8`}
-      >
-        <div>
-          <div className="flex w-full flex-col items-start justify-between gap-4 border-b border-gray-800 p-4 sm:flex-row sm:items-center sm:p-[2%]">
-            {/* Left Heading */}
-            <h1 className="flex items-center gap-2 text-xl font-bold text-white sm:text-2xl">
-              <ArrowLeft
-                onClick={() => Navigate(-1)}
-                className="cursor-pointer hover:text-[#6565cd]"
-              />
-              Contact
-            </h1>
-          </div>
-        </div>
-
+      <div className={`min-h-screen ${theme} px-4 sm:px-6 lg:px-8`}>
         <div className="mx-auto mt-5 max-w-4xl">
           <div
             className={`${theme.colors.card} ${theme.radius.card} p-6 backdrop-blur-lg md:p-8`}

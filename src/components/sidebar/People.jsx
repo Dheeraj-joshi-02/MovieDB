@@ -31,18 +31,6 @@ const People = () => {
       <div
         className={`bg-gradient min-h-screen w-full text-white ${theme.colors.background}`}
       >
-        {/* Header Section */}
-        <div className="flex w-full flex-col items-start justify-between gap-4 border-b border-gray-800 p-4 sm:flex-row sm:items-center sm:p-[2%]">
-          {/* Left Heading */}
-          <h1 className="flex items-center gap-2 text-xl font-bold text-white sm:text-2xl">
-            <ArrowLeft
-              onClick={() => navigate(-1)}
-              className="cursor-pointer hover:text-[#6565cd]"
-            />
-            People
-          </h1>
-        </div>
-
         {/* Card Section */}
         <div className="flex w-full gap-2 sm:w-auto">
           <Card data={People} title={"popular"} />

@@ -11,7 +11,7 @@ export const movieSlice = createSlice({
     loadMovie: (state, action) => {
       state.info = action.payload;
     },
-    removeMovie: (state, value) => {
+    removeMovie: (state) => {
       state.info = null;
     },
   },

@@ -14,26 +14,27 @@ import Trending from "./components/sidebar/Trending";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MovieDetails from "./components/details/movieDetails";
 import TvDetails from "./components/details/tvDetails";
+import PeopleDetails from "./components/details/peopleDetails";
+import Home from "./components/home/Home";
 
 createRoot(document.getElementById("root")).render(
   <React.Fragment>
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/trending" element={<Trending />} />
-          <Route path="/popular" element={<Popular />} />
-          <Route path="/movies" element={<Movies />}>
-            <Route path="/movies/detail/:id" element={<MovieDetails />} />
+          <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
+            <Route path="/trending" element={<Trending />} />
+            <Route path="/popular" element={<Popular />} />
+            <Route path="/movie" element={<Movies />} />
+            <Route path="/movie/:id" element={<MovieDetails />} />
+            <Route path="/tv" element={<Tv />} />
+            <Route path="/tv/:id" element={<TvDetails />} />
+            <Route path="/people" element={<People />} />
+            <Route path="people/:id" element={<PeopleDetails />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Route>
-          <Route path="/tv" element={<Tv />}>
-            <Route path="/tv/detail/:id" element={<TvDetails />} />
-          </Route>
-          <Route path="/people" element={<People />}>
-            <Route path="people/detail/:id" />
-          </Route>
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </Provider>

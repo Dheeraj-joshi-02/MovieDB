@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import theme from "../../../../src/config/theme";
 
 const Card = ({ data, title }) => {
-  console.log(data);
-
   const [hoveredItem, setHoveredItem] = useState(null);
 
   // Function to format date as just the year (e.g., "2025")
@@ -55,11 +53,14 @@ const Card = ({ data, title }) => {
                   <p className={`mb-2 line-clamp-4 text-sm text-white`}>
                     {item.overview || "No description available."}
                   </p>
-                  <button
-                    className={`${theme.colors.primary} w-full rounded-md px-3 py-2 text-xs text-white transition-all duration-200 hover:brightness-110 ${theme.radius.button}`}
-                  >
-                    View Details
-                  </button>
+
+                  <Link to={`${data.media_type || title}/details/${item.id}`}>
+                    <button
+                      className={`${theme.colors.primary} w-full cursor-pointer rounded-md px-3 py-2 text-xs text-white transition-all duration-200 hover:brightness-110 ${theme.radius.button}`}
+                    >
+                      View Details
+                    </button>
+                  </Link>
                 </div>
               </div>
 

@@ -1,6 +1,4 @@
-import { ArrowLeft } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Dropdown from "../home/Dropdown";
 import axios from "../../utils/Axios";
 import Card from "./components/Card";
@@ -10,7 +8,6 @@ import theme from "../../config/theme";
 const Popular = () => {
   document.title = "MoiveDB | Popular";
 
-  const navigate = useNavigate();
   const [category, setCategory] = useState("movie");
   const [populars, setPopular] = useState([]);
 
@@ -32,17 +29,7 @@ const Popular = () => {
         className={`bg-gradient min-h-screen w-full text-white ${theme.colors.background}`}
       >
         {/* Header Section */}
-        <div className="flex w-full flex-col items-start justify-between gap-4 border-b border-gray-800 p-4 sm:flex-row sm:items-center sm:p-[2%]">
-          {/* Left Heading */}
-          <h1 className="flex items-center gap-2 text-xl font-bold text-white sm:text-2xl">
-            <ArrowLeft
-              onClick={() => navigate(-1)}
-              className="cursor-pointer hover:text-[#6565cd]"
-            />
-            Popular
-          </h1>
-
-          {/* Right Dropdowns */}
+        <div className="float-end flex w-full flex-col justify-end gap-4 p-4 sm:flex-row sm:items-center sm:p-[2%]">
           <div className="flex w-full gap-2 sm:w-auto">
             <Dropdown
               className="w-full sm:w-auto"

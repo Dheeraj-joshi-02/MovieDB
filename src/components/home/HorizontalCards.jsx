@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import NoImage from "../../assets/No-image.png";
 import theme from "../../config/theme";
+import { Link } from "react-router-dom";
 
-const HorizontalCards = ({ data }) => {
+const HorizontalCards = ({ data, title }) => {
   const [hoveredItem, setHoveredItem] = useState(null);
 
   // Function to format date as just the year (e.g., "2025")
@@ -23,7 +24,8 @@ const HorizontalCards = ({ data }) => {
       {/* Horizontal scrollable cards */}
       <div className="scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900 flex gap-4 overflow-x-auto p-3">
         {data.map((item, id) => (
-          <div
+          <Link
+            to={`${data.media_type || title}/details/${item.id}`}
             key={id}
             className={`group relative flex-shrink-0 cursor-pointer overflow-hidden ${theme.radius.card} ${theme.colors.card} ${theme.transition.base} w-[75%] transform transition-transform duration-300 hover:scale-105 sm:w-[45%] md:w-[30%] lg:w-[22%] xl:w-[18%]`}
             onMouseEnter={() => setHoveredItem(id)}
@@ -114,7 +116,7 @@ const HorizontalCards = ({ data }) => {
                 )}
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

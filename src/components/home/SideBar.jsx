@@ -29,8 +29,8 @@ const SideBar = ({ isOpen, onClose }) => {
     },
     {
       icon: <ClapperboardIcon className="h-5 w-5" />,
-      label: "Movies",
-      path: "/movies",
+      label: "Movie",
+      path: "/movie",
     },
     {
       icon: <TvMinimalPlay className="h-5 w-5" />,
