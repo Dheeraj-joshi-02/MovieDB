@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAsyncMovieDetails } from "../../store/actions/movieActions";
+import { getAsyncMovieDetails } from "../store/actions/movieActions";
 import { useParams } from "react-router-dom";
 
 const MovieDetails = () => {
