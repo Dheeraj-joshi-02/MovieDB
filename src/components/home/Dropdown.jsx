@@ -1,19 +1,20 @@
 import { ChevronDown } from "lucide-react";
 import React from "react";
+import theme from "../../config/theme";
 
 const Dropdown = ({ title, options, func, className }) => {
   return (
     <React.Fragment>
-      <div className={`relative w-56 ${className}`}>
+      <div className={`relative w-44 ${className}`}>
         <select
           onChange={func}
-          defaultValue={0}
+          defaultValue=""
           name="format"
-          options
           id="format"
-          className="w-full cursor-pointer appearance-none rounded-lg border border-gray-600 bg-gray-900 px-4 py-3 pr-10 text-sm text-white transition focus:border-[#6565cd] focus:ring-1 focus:ring-[#6565cd] focus:outline-none sm:text-base"
+          aria-label={title}
+          className={theme.dropdown.select.default}
         >
-          <option value={0} hidden>
+          <option value="" hidden>
             {title}
           </option>
           {options.map((option) => (
@@ -22,8 +23,8 @@ const Dropdown = ({ title, options, func, className }) => {
             </option>
           ))}
         </select>
-        <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
-          <ChevronDown />
+        <div className={`${theme.dropdown.icon}`}>
+          <ChevronDown className="h-4 w-4" />
         </div>
       </div>
     </React.Fragment>

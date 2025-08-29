@@ -24,7 +24,7 @@ const App = () => {
     }
   }, [category]);
 
-  const getTrendingRandomWallpaper = async () => {
+  const getTrendingRandomWallpaper = React.useCallback(async () => {
     try {
       const { data } = await axios.get(`/trending/all/day`);
       let randomIndex = Math.floor(Math.random() * data.results.length);
@@ -33,15 +33,13 @@ const App = () => {
     } catch (error) {
       console.log(`fetchTrendingRandomWallpaper Error: ${error}`);
     }
-  };
+  }, []);
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      getTrendingWallpaper();
-      !wallpaper && getTrendingRandomWallpaper();
-    });
-
-    return () => clearTimeout(timeoutId);
-  }, [category, getTrendingWallpaper, wallpaper]);
+    getTrendingWallpaper();
+    if (!wallpaper) {
+      getTrendingRandomWallpaper();
+    }
+  }, [category, getTrendingWallpaper, wallpaper, getTrendingRandomWallpaper]);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 

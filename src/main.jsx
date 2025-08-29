@@ -8,6 +8,8 @@ import Popular from "./components/sidebar/Popular";
 import Movies from "./components/sidebar/Movies";
 import Tv from "./components/sidebar/TV";
 import People from "./components/sidebar/People";
+import About from "./components/sidebar/About";
+import Contact from "./components/sidebar/Contact";
 
 createRoot(document.getElementById("root")).render(
   <React.Fragment>
@@ -19,6 +21,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/movies" element={<Movies />} />
         <Route path="/tv" element={<Tv />} />
         <Route path="/people" element={<People />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   </React.Fragment>,

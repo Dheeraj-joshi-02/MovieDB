@@ -4,69 +4,73 @@ import { useEffect, useState } from "react";
 import NoImage from "../../assets/No-image.png";
 import { Link } from "react-router-dom";
 import React from "react";
+import theme from "../../config/theme";
 
 const Header = ({ onMenuClick }) => {
   const [query, setQuery] = useState("");
-  const [searchData, setsearchData] = useState([]);
+  const [searchData, setSearchData] = useState([]);
 
   useEffect(() => {
     if (!query) {
-      setsearchData([]);
+      setSearchData([]);
       return;
     }
     const getSearch = async () => {
       try {
         const { data } = await axios.get(`/search/multi?query=${query}`);
-        setsearchData(data.results);
+        setSearchData(data.results);
       } catch (error) {
         console.log(`Error: ${error}`);
       }
     };
     let timer = setTimeout(() => {
       getSearch();
-    });
+    }, 500); // debounce for smoother search
 
     return () => clearTimeout(timer);
   }, [query]);
 
   return (
     <React.Fragment>
-      <header className="sticky top-0 z-30 border-r border-gray-800 backdrop-blur-lg">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+      <header className={theme.header.base}>
+        <div className={theme.header.container}>
+          <div className={theme.header.inner}>
             {/* Left section */}
             <div className="flex items-center gap-4">
               <button
                 onClick={onMenuClick}
-                className="cursor-pointer rounded-lg p-2 text-white transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none lg:hidden"
                 aria-label="Open sidebar menu"
+                className={theme.sidebar.header.closeButton}
               >
                 <Menu className="h-5 w-5" />
               </button>
             </div>
 
             {/* Search section */}
-            <div className="relative flex h-full w-full max-w-[720px] items-center justify-center px-2">
-              <Search className="absolute left-5 h-5 w-5 text-3xl text-zinc-400" />
+            <div className={theme.header.search.container}>
+              <Search className={theme.header.search.icon} />
               <input
                 onChange={(event) => setQuery(event.target.value)}
                 value={query}
                 type="text"
-                className="w-full rounded-lg border-1 border-zinc-300 bg-transparent px-5 py-2 pl-10 text-white outline-0 placeholder:text-zinc-400"
-                placeholder="Search for a movies, tv show, and person...."
+                className={`${theme.header.search.inputBase}`}
+                placeholder="Search for movies, TV shows, or people.."
               />
               {query.length > 0 && (
                 <PlusIcon
                   onClick={() => setQuery("")}
-                  className="absolute right-5 h-5 w-5 rotate-45 cursor-pointer text-zinc-400"
+                  className={theme.header.search.inputClear}
                 />
               )}
+
+              {/* Dropdown search results */}
               {query.length > 0 && searchData.length > 0 && (
-                <div className="absolute top-[85%] right-0 -bottom-3 left-0 mx-auto h-[50vh] w-[98%] overflow-y-scroll rounded-lg bg-red-50 text-gray-600">
+                <div className={theme.header.search.results.container}>
                   {searchData.map((item) => (
                     <Link
                       key={item.id}
-                      className="sm:gap flex w-full items-start justify-start gap-5 rounded-lg border-b-2 border-gray-200 p-2 font-semibold duration-500 hover:bg-zinc-300 hover:text-black sm:p-4"
+                      to={`/${item.media_type}/${item.id}`}
+                      className={theme.header.search.results.item}
                     >
                       <img
                         src={
@@ -77,17 +81,17 @@ const Header = ({ onMenuClick }) => {
                             : NoImage
                         }
                         alt="poster"
-                        className="h-12 w-12 rounded-full object-cover sm:h-24 sm:w-24"
+                        className="h-14 w-14 rounded-md object-cover sm:h-20 sm:w-20"
                       />
-                      <div className="leading-snug">
-                        <h5 className="line-clamp-1 text-sm font-medium sm:text-base md:text-lg">
+                      <div className="flex flex-col">
+                        <h5 className={theme.header.search.results.title}>
                           {item.name ||
                             item.title ||
                             item.original_name ||
                             item.original_title}
                         </h5>
-                        <p className="mt-1 line-clamp-2 text-xs text-gray-500 sm:text-sm md:text-sm">
-                          {item.overview}
+                        <p className={theme.header.search.results.description}>
+                          {item.overview || "No description available."}
                         </p>
                       </div>
                     </Link>
@@ -96,12 +100,10 @@ const Header = ({ onMenuClick }) => {
               )}
             </div>
 
-            {/* Right section*/}
+            {/* Right section */}
             <div className="flex items-center gap-2">
-              <div className="bg-btn-gradient flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium text-white">
-                <span className="cursor-pointer">
-                  <User className="h-5 w-5" />
-                </span>
+              <div className={theme.header.userButton}>
+                <User className="h-5 w-5" />
               </div>
             </div>
           </div>
@@ -110,4 +112,5 @@ const Header = ({ onMenuClick }) => {
     </React.Fragment>
   );
 };
+
 export default Header;

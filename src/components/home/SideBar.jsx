@@ -11,6 +11,7 @@ import {
   X,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import theme from "../../config/theme";
 
 const SideBar = ({ isOpen, onClose }) => {
   const location = useLocation();
@@ -56,7 +57,7 @@ const SideBar = ({ isOpen, onClose }) => {
     <React.Fragment>
       {isOpen && (
         <div
-          className="bg-opacity-50 fixed inset-0 z-40 bg-black lg:hidden"
+          className={theme.sidebar.overlay}
           onClick={onClose}
           role="button"
           tabIndex={0}
@@ -68,18 +69,18 @@ const SideBar = ({ isOpen, onClose }) => {
       )}
 
       <aside
-        className={`bg-gradient fixed top-0 left-0 z-50 flex h-full w-72 transform flex-col border-r shadow-xl backdrop-blur-lg transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
+        className={`${theme.sidebar.container} ${theme.colors.background} ${isOpen ? theme.sidebar.mobileOpen : theme.sidebar.mobileClosed} `}
         aria-label="Movie sidebar"
       >
         {/* Header */}
-        <div className="flex h-16 items-center justify-between border-b border-gray-800 px-6">
-          <h1 className="flex items-center gap-2 text-xl font-extrabold text-white">
+        <div className={theme.sidebar.header.base}>
+          <h1 className={theme.sidebar.header.title}>
             <Tv className="text-[#6565cd]" />
             <span>MovieDB</span>
           </h1>
           <button
             onClick={onClose}
-            className="rounded-full p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-blue-500 lg:hidden"
+            className={theme.sidebar.header.closeButton}
             aria-label="Close sidebar"
           >
             <X className="h-5 w-5" />
@@ -87,22 +88,18 @@ const SideBar = ({ isOpen, onClose }) => {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 overflow-y-auto p-6">
-          <div className="mb-4">
-            <h2 className="border-b border-gray-700 pb-2 text-sm font-semibold tracking-wide text-gray-400 uppercase">
-              New Feeds
-            </h2>
-          </div>
+        <nav className={theme.sidebar.navigation.container}>
+          <h2 className={theme.sidebar.navigation.sectionHeader}>New Feeds</h2>
 
           <div className="flex flex-col space-y-2">
             {navLinks.map((link, idx) => (
               <Link
                 key={idx}
                 to={link.path}
-                className={`flex items-center gap-2 rounded-md px-4 py-2 font-medium transition-all duration-300 ${
+                className={`${theme.sidebar.navigation.linkBase} ${
                   location.pathname === link.path
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md"
-                    : "text-gray-300 hover:bg-gray-800 hover:text-white"
+                    ? theme.sidebar.navigation.linkActive
+                    : theme.sidebar.navigation.linkInactive
                 }`}
               >
                 {link.icon}
@@ -112,10 +109,10 @@ const SideBar = ({ isOpen, onClose }) => {
           </div>
 
           {/* Divider */}
-          <div className="my-6 border-t border-gray-700"></div>
+          <div className={theme.sidebar.navigation.divider}></div>
 
           <div className="mb-4">
-            <h2 className="border-b border-gray-700 pb-2 text-sm font-semibold tracking-wide text-gray-400 uppercase">
+            <h2 className={theme.sidebar.navigation.sectionHeader}>
               Website Information
             </h2>
           </div>
@@ -125,10 +122,10 @@ const SideBar = ({ isOpen, onClose }) => {
               <Link
                 key={idx}
                 to={link.path}
-                className={`flex items-center gap-2 rounded-md px-4 py-2 font-medium transition-all duration-300 ${
+                className={`${theme.sidebar.navigation.linkBase} ${
                   location.pathname === link.path
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md"
-                    : "text-gray-300 hover:bg-gray-800 hover:text-white"
+                    ? theme.sidebar.navigation.linkActive
+                    : theme.sidebar.navigation.linkInactive
                 }`}
               >
                 {link.icon}

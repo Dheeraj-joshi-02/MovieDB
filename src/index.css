@@ -14,15 +14,7 @@
 }
 
 @layer components {
-  .bg-btn-gradient {
-    @apply bg-gradient-to-br from-blue-500 to-purple-600;
-  }
-
   .bg-gradient {
     @apply border-gray-800 bg-gradient-to-b from-gray-900/95 to-black/95;
-  }
-
-  .bg-card {
-    @apply bg-zinc-900;
   }
 }
