@@ -4,18 +4,18 @@ import React from "react";
 import store from "./store/store";
 import { Provider } from "react-redux";
 import Tv from "./components/sidebar/TV";
+import Home from "./components/home/Home";
+import TvDetails from "./details/TvDetails";
 import { createRoot } from "react-dom/client";
 import About from "./components/sidebar/About";
 import People from "./components/sidebar/People";
 import Movies from "./components/sidebar/Movies";
-import Contact from "./components/sidebar/Contact";
+import MovieDetails from "./details/MovieDetails";
 import Popular from "./components/sidebar/Popular";
+import PeopleDetails from "./details/PeopleDetails";
+import Contact from "./components/sidebar/Contact";
 import Trending from "./components/sidebar/Trending";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MovieDetails from "./components/details/movieDetails";
-import TvDetails from "./components/details/tvDetails";
-import PeopleDetails from "./components/details/peopleDetails";
-import Home from "./components/home/Home";
 
 createRoot(document.getElementById("root")).render(
   <React.Fragment>
@@ -27,11 +27,11 @@ createRoot(document.getElementById("root")).render(
             <Route path="/trending" element={<Trending />} />
             <Route path="/popular" element={<Popular />} />
             <Route path="/movie" element={<Movies />} />
-            <Route path="/movie/:id" element={<MovieDetails />} />
+            <Route path="/movie/details/:id" element={<MovieDetails />} />
             <Route path="/tv" element={<Tv />} />
             <Route path="/tv/:id" element={<TvDetails />} />
             <Route path="/people" element={<People />} />
-            <Route path="people/:id" element={<PeopleDetails />} />
+            <Route path="people/details/:id" element={<PeopleDetails />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
           </Route>
