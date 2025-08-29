@@ -3,7 +3,9 @@ import NoImage from "../../../assets/No-image.png";
 import { Link } from "react-router-dom";
 import theme from "../../../../src/config/theme";
 
-const Card = ({ data }) => {
+const Card = ({ data, title }) => {
+  console.log(data);
+
   const [hoveredItem, setHoveredItem] = useState(null);
 
   // Function to format date as just the year (e.g., "2025")
@@ -29,7 +31,7 @@ const Card = ({ data }) => {
             onMouseEnter={() => setHoveredItem(idx)}
             onMouseLeave={() => setHoveredItem(null)}
           >
-            <Link>
+            <Link to={`${data.media_type || title}/details/${item.id}`}>
               {/* Poster with hover overlay */}
               <div className="relative h-64 w-full overflow-hidden">
                 <img
