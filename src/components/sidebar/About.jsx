@@ -1,6 +1,5 @@
 import React from "react";
 import theme from "../../config/theme";
-import { ArrowLeft } from "lucide-react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const About = () => {
@@ -8,8 +7,10 @@ const About = () => {
 
   return (
     <React.Fragment>
-      <div className={`min-h-screen ${theme} px-4 sm:px-6 lg:px-8`}>
-        <div className="mx-auto mt-5 max-w-4xl">
+      <div
+        className={`min-h-screen ${theme.colors.background} flex items-center px-4 sm:px-6 lg:px-8`}
+      >
+        <div className="mx-auto max-w-4xl py-5">
           <div
             className={`${theme.colors.card} ${theme.radius.card} p-6 backdrop-blur-lg md:p-8`}
           >

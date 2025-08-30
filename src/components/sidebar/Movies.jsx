@@ -1,16 +1,12 @@
-import { ArrowLeft } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Dropdown from "../home/Dropdown";
 import axios from "../../utils/Axios";
 import Card from "./components/Card";
 import Loader from "../loader/Loader";
-import theme from "../../config/theme";
 
 const Movies = () => {
   document.title = "MoiveDB | Movies";
 
-  const navigate = useNavigate();
   const [category, setCategory] = useState("now_playing");
   const [movies, setMovies] = useState([]);
 
@@ -28,9 +24,7 @@ const Movies = () => {
 
   return movies.length > 0 ? (
     <React.Fragment>
-      <div
-        className={`bg-gradient min-h-screen w-full text-white ${theme.colors.background}`}
-      >
+      <div className={`min-h-screen w-full text-white`}>
         {/* Header Section */}
         <div className="float-end flex w-full justify-end gap-4 p-4 sm:flex-row sm:items-center sm:p-[2%]">
           <div className="flex w-full gap-2 sm:w-auto">

@@ -32,9 +32,9 @@ createRoot(document.getElementById("root")).render(
             <Route path="/tv/:id" element={<TvDetails />} />
             <Route path="/people" element={<People />} />
             <Route path="people/details/:id" element={<PeopleDetails />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
           </Route>
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -25,7 +25,7 @@ const Card = ({ data, title }) => {
         {data.map((item, idx) => (
           <div
             key={idx}
-            className={`group relative overflow-hidden ${theme.radius.card} ${theme.colors.card} ${theme.transition.base} transform transition-transform duration-300 hover:scale-105`}
+            className={`group relative min-w-56 overflow-hidden ${theme.radius.card} ${theme.colors.card} ${theme.transition.base} transform transition-transform duration-300 hover:scale-105`}
             onMouseEnter={() => setHoveredItem(idx)}
             onMouseLeave={() => setHoveredItem(null)}
           >

@@ -1,15 +1,11 @@
-import { ArrowLeft } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "../../utils/Axios";
 import Card from "./components/Card";
 import Loader from "../loader/Loader";
-import theme from "../../config/theme";
 
 const People = () => {
   document.title = "MoiveDB | People";
 
-  const navigate = useNavigate();
   const [People, setPeople] = useState([]);
 
   const getPeople = async () => {
@@ -28,9 +24,7 @@ const People = () => {
 
   return People.length > 0 ? (
     <React.Fragment>
-      <div
-        className={`bg-gradient min-h-screen w-full text-white ${theme.colors.background}`}
-      >
+      <div className={`min-h-screen w-full text-white`}>
         {/* Card Section */}
         <div className="flex w-full gap-2 sm:w-auto">
           <Card data={People} title={"popular"} />

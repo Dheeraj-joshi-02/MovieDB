@@ -25,9 +25,7 @@ const Trending = () => {
 
   return trendings.length > 0 ? (
     <React.Fragment>
-      <div
-        className={`bg-gradient min-h-screen w-full text-white ${theme.colors.background}`}
-      >
+      <div className={`min-h-screen w-full text-white`}>
         {/* Header Section */}
         <div className="float-end flex w-full justify-end gap-4 p-4 sm:flex-row sm:items-center sm:p-[2%]">
           <div className="flex w-full gap-2 sm:w-auto">
