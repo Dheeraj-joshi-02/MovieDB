@@ -32,7 +32,7 @@ const Header = ({ onMenuClick }) => {
 
   return (
     <React.Fragment>
-      <header className={` ${theme.header.base} px-[2%]`}>
+      <header className={`${theme.header.base} px-[2%]`}>
         <div className={theme.header.inner}>
           {/* Left section */}
           <div className="flex items-center gap-4">
@@ -64,12 +64,12 @@ const Header = ({ onMenuClick }) => {
 
             {/* Dropdown search results */}
             {query.length > 0 && searchData.length > 0 && (
-              <div className={theme.header.search.results.container}>
+              <div className={theme.header.search.resultsContainer}>
                 {searchData.map((item) => (
                   <Link
                     key={item.id}
                     to={`/${item.media_type}/${item.id}`}
-                    className={theme.header.search.results.item}
+                    className={theme.header.search.resultsItem}
                   >
                     <img
                       src={
@@ -83,13 +83,13 @@ const Header = ({ onMenuClick }) => {
                       className="h-14 w-14 rounded-md object-cover sm:h-20 sm:w-20"
                     />
                     <div className="flex flex-col">
-                      <h5 className={theme.header.search.results.title}>
+                      <h5 className={theme.header.search.resultsTitle}>
                         {item.name ||
                           item.title ||
                           item.original_name ||
                           item.original_title}
                       </h5>
-                      <p className={theme.header.search.results.description}>
+                      <p className={theme.header.search.resultsDescription}>
                         {item.overview || "No description available."}
                       </p>
                     </div>

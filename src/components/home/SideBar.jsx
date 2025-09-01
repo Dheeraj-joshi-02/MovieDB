@@ -115,7 +115,7 @@ const SideBar = ({ isOpen, onClose }) => {
             <h2 className={theme.sidebar.navigation.sectionHeader}>
               Website Information
             </h2>
-          </div>
+          </div>w
 
           <div className="flex flex-col space-y-2">
             {infoLinks.map((link, idx) => (
