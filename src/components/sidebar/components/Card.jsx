@@ -20,7 +20,7 @@ const Card = ({ data, title }) => {
   };
 
   return (
-    <div className="w-full p-4 sm:p-6">
+    <div className="m-auto w-full p-4 sm:p-6">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {data.map((item, idx) => (
           <div

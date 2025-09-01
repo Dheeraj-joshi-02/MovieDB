@@ -74,7 +74,6 @@ const theme = {
   },
   header: {
     base: "sticky top-0 z-30 border-b border-gray-800 backdrop-blur-lg",
-    container: "w-full px-4 sm:px-6 lg:px-8",
     inner: "flex h-16 items-center justify-between",
     search: {
       container:

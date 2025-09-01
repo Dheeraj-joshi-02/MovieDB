@@ -26,7 +26,7 @@ const People = () => {
     <React.Fragment>
       <div className={`min-h-screen w-full text-white`}>
         {/* Card Section */}
-        <div className="flex w-full gap-2 sm:w-auto">
+        <div className="w-full gap-2 sm:w-auto">
           <Card data={People} title={"popular"} />
         </div>
       </div>
