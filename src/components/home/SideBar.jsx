@@ -10,7 +10,7 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import theme from "../../config/theme";
 
 const SideBar = ({ isOpen, onClose }) => {
@@ -76,7 +76,7 @@ const SideBar = ({ isOpen, onClose }) => {
         <div className={theme.sidebar.header.base}>
           <h1 className={theme.sidebar.header.title}>
             <Tv className="text-[#6565cd]" />
-            <span>MovieDB</span>
+            <NavLink to="/">MovieDB</NavLink>
           </h1>
           <button
             onClick={onClose}
